@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fachi — Character Wiki</title>
+    <!-- Google Fonts for elegant serif and clean sans-serif typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ambient & Geometric Background Decorators -->
+    <div class="bg-glow-left"></div>
+    <div class="bg-glow-right"></div>
+    <div class="bg-grid-overlay"></div>
+    
+    <!-- Fine Structural Lines -->
+    <div class="bg-vertical-line left"></div>
+    <div class="bg-vertical-line right"></div>
+    <div class="bg-frame-top"></div>
+    <div class="bg-frame-bottom"></div>
+
+    <!-- Minimalist Framing Corners -->
+    <div class="corner-ornament top-left"></div>
+    <div class="corner-ornament top-right"></div>
+    <div class="corner-ornament bottom-left"></div>
+    <div class="corner-ornament bottom-right"></div>
+
+    <!-- Hero Header -->
+    <header class="hero">
+        <div class="container animate-fade-in">
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Archives Theme">☼</button>
+            <div class="hero-emblem">✦</div>
+            <h1 class="hero-title">Fachi</h1>
+            <p class="hero-tagline" id="hero-tagline-text">A curated archive of souls, legends, and forgotten stories.</p>
+            
+            <!-- Archive Index Navigation (Populated by JavaScript) -->
+            <nav class="archive-nav" id="archive-nav-container"></nav>
+            <nav class="archive-nav" id="archive-nav-container"></nav>
+            <div class="divider"></div>
+            
+            <!-- Archival Spotlight (Populated by JavaScript) -->
+            <div class="spotlight-section" id="spotlight-container"></div>
+        </div>
+    </header>
+
+    <!-- Main Content (Populated by JavaScript) -->
+    <main class="container" id="wiki-main-content"></main>
+
+    <!-- Scribe Signature (End of File) -->
+    <div class="scribe-signature animate-fade-in" style="animation-delay: 0.5s;">
+        <div class="signature-ornament">✦ &nbsp; ━ &nbsp; ☩ &nbsp; ━ &nbsp; ✦</div>
+        <p class="signature-text">Data Stream Terminated. May the records preserve their flame.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Fachi Chronicles.</p>
+        <p>"This website is a non-commercial, fan-made wiki. All game characters, assets, images, and lore text are the sole property of Hypergryph, Kuro Games, Project Moon, and HoYoverse. No copyright infringement is intended."</p>
+    </footer>
+
+    <!-- Character Profile Modal -->
+    <div id="char-modal" class="modal-overlay" aria-hidden="true" role="dialog">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+            <div class="modal-body" id="modal-body-content">
+                <!-- Dynamically populated via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Fates Easter Egg Button -->
+    <button id="fates-button" class="fates-trigger" aria-label="Consult the Fates">
+        <span class="fates-icon">☩</span>
+        <span class="fates-tooltip">Consult the Fates</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
