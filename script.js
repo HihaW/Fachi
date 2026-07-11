@@ -1,10 +1,3 @@
-/**
- * Fachi Wiki - Dynamic Content Database and Filtering Engine
- */
-
-// 1. The Central Database
-// To add a new fandom: Copy an entire block structure and change the fields.
-// To add character photos: Place the image path in the "image" field.
 const wikiDatabase = [
     {
         fandomName: "Hoyoverse",
@@ -13,24 +6,24 @@ const wikiDatabase = [
             {
                 name: "Firefly",
                 initials: "FF",
-                image: "img/firefly.webp", // Add your photo path here, e.g. "images/firefly.jpg"
+                image: "img/firefly.webp", 
                 origin: "Honkai: Star Rail",
                 birthday: "Unknown",
                 faction: "Stellaron Hunters",
                 summary: "A member of the Stellaron Hunters who fights clad in a mechanical armor known as 'SAM.' Born as a weapon, she seeks to defy her engineered fate and live simply as a human.",
                 story: "Constructed originally as a biological weapon tasked with confronting the devastating Swarm on behalf of Glamoth, Firefly was modified genetically, a condition that left her bound to Entropy Loss Syndrome. Compelled to reside inside the heavy armor known as SAM to sustain her life, she eventually joined the Stellaron Hunters. Seeking to defy her predetermined genetic blueprint, her absolute journey remains focused on uncovering a simple way to experience existence, eventually finding meaning as a human.",
-                youtubeId: "https://www.youtube.com/watch?v=eFXQqY3ia6k" // Official ID for "Animated Short: Embers of Glamoth"
+                youtubeId: "https://www.youtube.com/watch?v=eFXQqY3ia6k"
             },
             {
                 name: "Furina",
                 initials: "FR",
-                image: "img/furina.jpg", // If left empty, it safely uses the initials placeholder instead
+                image: "img/furina.jpg", 
                 origin: "Genshin Impact",
                 birthday: "October 13",
                 faction: "Fontaine",
                 summary: "The former Hydro Archon of Fontaine, celebrated for her theatrical flair and dramatic public persona. Behind the stage lights lies a history of immense sacrifice and quiet endurance.",
                 story: "For five centuries, Furina acted as the public figurehead and Hydro Archon of Fontaine, maintaining an energetic, dramatic face to outwit the prophecy of ruin that loomed over her homeland. Behind this public performance sat a regular human enduring heavy isolation and intense emotional burdens. Having relinquished her divine status, she has stepped off the literal stage to appreciate a quieter mortal path, rediscovering her love for theatrical performances on her own terms.",
-                youtubeId: "https://www.youtube.com/watch?v=EN79SfbcvIE" // Genshin Impact Character Demo
+                youtubeId: "https://www.youtube.com/watch?v=EN79SfbcvIE"
             }
         ]
     },
@@ -47,7 +40,7 @@ const wikiDatabase = [
                 faction: "The Index (House Of Spiders)",
                 summary: "Rien is a tragic, tormented figure ordered to act as an exact psychological and physical imitation of Roland. Enslaved by the Prescripts, he lived a controlled life where every action, speech, and even his combat choices were dictated for him.",
                 story: "Though forced to let his own wife and daughter die to maintain his role, Rien secretly developed genuine attachments. During the events of Canto 9, he is hunted for disobeying the Prescripts in favor of his own hidden desires. In his final moments, instead of reciting a forced prayer, he manages one final act of pathetic but profound defiance by taking his own life.",
-                youtubeId: "https://www.youtube.com/watch?v=WF5wvJjEwVU" // Limbus Company official gameplay trailer
+                youtubeId: "https://www.youtube.com/watch?v=WF5wvJjEwVU"
             },
             {
                 name: "Sora",
@@ -58,7 +51,7 @@ const wikiDatabase = [
                 faction: "The Index (House Of Spiders)",
                 summary: "An anxious, deeply insecure apprentice Proxy who blindly relies on the Index's to Prescripts function.",
                 story: "Sora masks her brutal nature behind a timid, fragile facade to trick her targets. Seeking validation from her surrogate father, Rien, her extreme psychological turmoil triggers her Effloresced E.G.O: Procuration (heavy steel shackles). She aggressively executes the Index's violent mandates, entirely incapable of separating her own morals from the transactional commands of a Prescript.",
-                youtubeId: "https://www.youtube.com/watch?v=Y2-VkdfA2os" // Limbus Company official gameplay trailer
+                youtubeId: "https://www.youtube.com/watch?v=Y2-VkdfA2os"
             }
         ]
     },
@@ -132,37 +125,28 @@ document.addEventListener('DOMContentLoaded', () => {
     injectFactionCrests();
 });
 
-/**
- * Dynamically parses the database array to construct the HTML sections, 
- * character cards, and navigation items automatically.
- */
 function buildWikiStructure() {
     const navContainer = document.getElementById('archive-nav-container');
     const mainContent = document.getElementById('wiki-main-content');
 
     if (!navContainer || !mainContent) return;
 
-    // A. Generate "All" Navigation Button
     navContainer.innerHTML = `<button class="nav-btn active" data-filter="all">All Chronicles</button>`;
 
     wikiDatabase.forEach((fandom, fandomIndex) => {
-        // B. Generate Category Filter Buttons
         const button = document.createElement('button');
         button.className = 'nav-btn';
         button.setAttribute('data-filter', fandom.categoryId);
         button.textContent = fandom.fandomName;
         navContainer.appendChild(button);
 
-        // C. Generate Fandom Sections & Character Grids
         const section = document.createElement('section');
         section.className = 'wiki-section animate-slide-up';
         section.setAttribute('data-category', fandom.categoryId);
-        // stagger animation load visually
         section.style.animationDelay = `${fandomIndex * 0.15}s`;
 
         let cardsHTML = '';
         fandom.characters.forEach((char, charIndex) => {
-            // Determine whether to use an uploaded image file or a fallback placeholder
             const mediaHTML = char.image && char.image.trim() !== "" 
                 ? `<img src="${char.image}" alt="${char.name}" class="char-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                    <div class="char-placeholder" style="display:none;"><span>${char.initials}</span></div>`
@@ -205,7 +189,6 @@ function buildWikiStructure() {
         mainContent.appendChild(section);
     });
 
-    // D. Bind Card Click Event Triggers
     const cards = document.querySelectorAll('.char-card');
     cards.forEach(card => {
         card.addEventListener('click', () => {
@@ -217,9 +200,6 @@ function buildWikiStructure() {
     });
 }
 
-/**
- * Manages the navigation category filtering display logic.
- */
 function initializeArchiveFilter() {
     const navButtons = document.querySelectorAll('.nav-btn');
     const sections = document.querySelectorAll('.wiki-section');
@@ -232,38 +212,30 @@ function initializeArchiveFilter() {
             button.classList.add('active');
 
             sections.forEach(section => {
-                // FIX: Remove the initial load animation so it doesn't fight the JS transition
                 section.classList.remove('animate-slide-up');
 
                 const category = section.getAttribute('data-category');
                 const isMatch = filterValue === 'all' || category === filterValue;
                 
-                // Track if the section is explicitly hidden right now
                 const isCurrentlyHidden = section.style.display === 'none';
 
                 if (isMatch) {
                     if (isCurrentlyHidden) {
-                        // 1. Prepare element for transition smoothly
                         section.style.display = 'block';
                         section.style.opacity = '0';
                         section.style.transform = 'translateY(12px)';
                         
-                        // 2. Force a quick browser reflow
-                        section.offsetHeight; 
-
-                        // 3. Trigger the CSS transition
+                        section.offsetHeight;
                         setTimeout(() => {
                             section.style.opacity = '1';
                             section.style.transform = 'translateY(0)';
                         }, 20);
                     } else {
-                        // Keep it static if already visible
                         section.style.display = 'block';
                         section.style.opacity = '1';
                         section.style.transform = 'translateY(0)';
                     }
                 } else {
-                    // Instantly hide unmatching sections
                     section.style.display = 'none';
                 }
             });
@@ -271,9 +243,6 @@ function initializeArchiveFilter() {
     });
 }
 
-/**
- * Extracts raw 11-character YouTube video IDs from various link structures.
- */
 function extractYoutubeId(url) {
     if (!url) return '';
     const cleanUrl = url.trim();
@@ -285,9 +254,6 @@ function extractYoutubeId(url) {
     return cleanUrl;
 }
 
-/**
- * Populates modal layouts and transitions the window to active focus.
- */
 function openModal(data) {
     const modal = document.getElementById('char-modal');
     const modalContent = document.getElementById('modal-body-content');
@@ -355,9 +321,6 @@ function openModal(data) {
     document.body.style.overflow = 'hidden';
 }
 
-/**
- * Dismisses the modal and clears embedded frame URLs to halt video playbacks.
- */
 function closeModal() {
     const modal = document.getElementById('char-modal');
     const modalContent = document.getElementById('modal-body-content');
@@ -370,14 +333,11 @@ function closeModal() {
     if (modalContent) {
         const iframe = modalContent.querySelector('iframe');
         if (iframe) {
-            iframe.src = ''; // Stops video playback
+            iframe.src = '';
         }
     }
 }
 
-/**
- * Sets up listeners for the various ways to dismiss the modal overlay.
- */
 function setupModalEvents() {
     const modal = document.getElementById('char-modal');
     const closeBtn = document.getElementById('modal-close-btn');
@@ -386,14 +346,12 @@ function setupModalEvents() {
 
     closeBtn.addEventListener('click', closeModal);
 
-    // Close when clicking directly on the blurred background overlay
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             closeModal();
         }
     });
 
-    // Close when pressing the Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             closeModal();
@@ -401,14 +359,10 @@ function setupModalEvents() {
     });
 }
 
-/**
- * Selects a random character from the database and renders the Spotlight section.
- */
 function initializeSpotlight() {
     const spotlightContainer = document.getElementById('spotlight-container');
     if (!spotlightContainer) return;
 
-    // Flatten all characters from the database categories into a single array
     const allCharacters = [];
     wikiDatabase.forEach(fandom => {
         fandom.characters.forEach(char => {
@@ -418,17 +372,14 @@ function initializeSpotlight() {
 
     if (allCharacters.length === 0) return;
 
-    // Pick a random character
     const randomIndex = Math.floor(Math.random() * allCharacters.length);
     const randomChar = allCharacters[randomIndex];
 
-    // Determine whether to use an uploaded image file or a fallback placeholder
     const mediaHTML = randomChar.image && randomChar.image.trim() !== "" 
         ? `<img src="${randomChar.image}" alt="${randomChar.name}" class="spotlight-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
            <div class="spotlight-placeholder" style="display:none;"><span>${randomChar.initials}</span></div>`
         : `<div class="spotlight-placeholder"><span>${randomChar.initials}</span></div>`;
 
-    // Render the spotlight block markup
     spotlightContainer.innerHTML = `
         <div class="spotlight-banner animate-slide-up" style="animation-delay: 0.1s;">
             <div class="spotlight-badge">Archival Spotlight</div>
@@ -451,8 +402,7 @@ function initializeSpotlight() {
             </div>
         </div>
     `;
-
-    // Set up click interactivity to trigger the existing modal view
+    
     const banner = spotlightContainer.querySelector('.spotlight-banner');
     if (banner) {
         banner.addEventListener('click', () => {
@@ -461,16 +411,11 @@ function initializeSpotlight() {
     }
 }
 
-/**
- * Initialises the 'Consult the Fates' easter egg click listener.
- * Dynamically parses the current database and triggers a random modal load.
- */
 function initializeFatesButton() {
     const fatesBtn = document.getElementById('fates-button');
     if (!fatesBtn) return;
 
     fatesBtn.addEventListener('click', () => {
-        // Flatten categories to compile all available characters
         const allCharacters = [];
         wikiDatabase.forEach(fandom => {
             fandom.characters.forEach(char => {
@@ -480,11 +425,9 @@ function initializeFatesButton() {
 
         if (allCharacters.length === 0) return;
 
-        // Draw a random character selection
         const randomIndex = Math.floor(Math.random() * allCharacters.length);
         const randomChar = allCharacters[randomIndex];
 
-        // Apply a visual button-press scale feedback before popping the modal
         fatesBtn.style.transform = 'scale(0.9) rotate(4deg)';
         
         setTimeout(() => {
@@ -494,11 +437,6 @@ function initializeFatesButton() {
     });
 }
 
-/**
- * 1. Time of Day Mode - Automates dark-theme shifts based on local hours
- * or manually via user button toggle preferences. Protected against 
- * Private Browsing restrictions.
- */
 function initializeThemeMode() {
     const toggleBtn = document.getElementById('theme-toggle');
     if (!toggleBtn) return;
@@ -507,13 +445,11 @@ function initializeThemeMode() {
     try {
         savedTheme = localStorage.getItem('fachi-theme');
     } catch (e) {
-        // Safe fallback for restricted/private browsing modes
     }
 
     const currentHour = new Date().getHours();
-    const isNightTime = currentHour >= 19 || currentHour < 6; // Active 7 PM to 6 AM
+    const isNightTime = currentHour >= 19 || currentHour < 6; 
 
-    // Check system preference or save records
     if (savedTheme === 'dark' || (!savedTheme && isNightTime)) {
         document.body.classList.add('dark-mode');
         toggleBtn.textContent = '☾';
@@ -528,21 +464,16 @@ function initializeThemeMode() {
         try {
             localStorage.setItem('fachi-theme', isDarkNow ? 'dark' : 'light');
         } catch (e) {
-            // Safe fallback for restricted/private browsing modes
         }
     });
 }
 
-/**
- * 2. Text Typewriter Effect - Progressively reveals text character by character
- * with variable pauses to mimic ink processing on parchment.
- */
 function initializeTypewriter() {
     const taglineElement = document.getElementById('hero-tagline-text');
     if (!taglineElement) return;
 
     const textToType = taglineElement.textContent.trim();
-    taglineElement.textContent = ''; // Empty out fallback string
+    taglineElement.textContent = ''; 
     taglineElement.style.opacity = '1';
 
     let charIdx = 0;
@@ -551,27 +482,21 @@ function initializeTypewriter() {
             taglineElement.textContent += textToType.charAt(charIdx);
             charIdx++;
             
-            // Adjust pacing on commas/periods for a more rhythmic human feel
             const lastChar = textToType.charAt(charIdx - 1);
             const delay = lastChar === ',' || lastChar === '.' ? 240 : 35 + Math.random() * 35;
             setTimeout(typeChar, delay);
         }
     }
     
-    // Small baseline offset to let elements settle before beginning typing process
     setTimeout(typeChar, 400);
 }
 
-/**
- * 3. Particle Sparkles on Hover - Spawns short-lived golden accents on 
- * top of active card components using performance-optimized event delegation.
- */
 function initializeCardSparkles() {
     const mainContent = document.getElementById('wiki-main-content');
     if (!mainContent) return;
 
     let lastSpawn = 0;
-    const throttleThreshold = 100; // ms between sparkle generation
+    const throttleThreshold = 100; 
 
     mainContent.addEventListener('mousemove', (e) => {
         const activeCard = e.target.closest('.char-card');
@@ -581,7 +506,6 @@ function initializeCardSparkles() {
         if (timestamp - lastSpawn < throttleThreshold) return;
         lastSpawn = timestamp;
 
-        // Create two sparkles with offset positioning vectors
         for (let i = 0; i < 2; i++) {
             createParticle(e.clientX, e.clientY);
         }
@@ -592,40 +516,31 @@ function initializeCardSparkles() {
         element.className = 'sparkle-particle';
         element.textContent = '✦';
 
-        // Offset spawn slightly around cursor tip
         const randomOffsetX = (Math.random() - 0.5) * 16;
         const randomOffsetY = (Math.random() - 0.5) * 8;
         
         element.style.left = `${cursorX + randomOffsetX + window.scrollX}px`;
         element.style.top = `${cursorY + randomOffsetY + window.scrollY}px`;
 
-        // Vary glyph sizing sizes
         const sizeScale = 0.5 + Math.random() * 0.7;
         element.style.fontSize = `${sizeScale}rem`;
 
-        // Customise movement paths
         const driftX = (Math.random() - 0.5) * 35;
-        const driftY = -35 - Math.random() * 25; // Send particles upward
+        const driftY = -35 - Math.random() * 25; 
         element.style.setProperty('--move-x', `${driftX}px`);
         element.style.setProperty('--move-y', `${driftY}px`);
 
         document.body.appendChild(element);
 
-        // Safe self-cleanup execution
         setTimeout(() => {
             element.remove();
         }, 500);
     }
 }
 
-/**
- * 1. Character Faction Background Crests
- * Dynamically appends a faint, atmospheric emblem based on faction data.
- */
 function injectFactionCrests() {
     const cards = document.querySelectorAll('.char-card');
     cards.forEach(card => {
-        // Find the faction text from the meta list within the card
         const factionNode = Array.from(card.querySelectorAll('.meta-item')).find(item => {
             const label = item.querySelector('.meta-label');
             return label && label.textContent.toLowerCase().includes('faction');
@@ -641,13 +556,10 @@ function injectFactionCrests() {
     });
 }
 
-/**
- * Maps faction strings to precise thematic unicode glyphs
- */
 function getFactionCrestSymbol(faction) {
     const lowerFaction = faction.toLowerCase();
     if (lowerFaction.includes('spider') || lowerFaction.includes('stellaron')) return '🕸';
     if (lowerFaction.includes('index') || lowerFaction.includes('rhodes')) return '☩';
     if (lowerFaction.includes('scientific') || lowerFaction.includes('montelli')) return '⚙';
-    return '✦'; // Default minimalist star emblem
+    return '✦';
 }
