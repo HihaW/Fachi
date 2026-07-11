@@ -1,12 +1,11 @@
-/* Custom Properties & Palette */
 :root {
-    --bg-color: #fcf8f2;        /* Premium parchment/cream background */
-    --text-color: #2d3e4e;      /* Elegant dark slate */
-    --text-muted: #5a6e85;      /* Softer slate for subtext */
-    --accent-color: #bba15c;    /* Muted premium gold */
-    --accent-light: #f5eedf;    /* Warm accent tint */
-    --card-bg: #ffffff;         /* Pure white for card elevation */
-    --border-color: #e6decb;    /* Light gold/cream border */
+    --bg-color: #fcf8f2;        
+    --text-color: #2d3e4e;      
+    --text-muted: #5a6e85;      
+    --accent-color: #bba15c;    
+    --accent-light: #f5eedf;    
+    --card-bg: #ffffff;         
+    --border-color: #e6decb;    
     --font-heading: 'Cinzel', Georgia, serif;
     --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
     --transition-smooth: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
@@ -14,7 +13,6 @@
     --gradient-bottom: #f0e6d6;
 }
 
-/* Global Styles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -106,7 +104,6 @@ body {
 }
 
 
-/* Fine Structural Lines */
 .bg-frame-top,
 .bg-frame-bottom {
     position: fixed;
@@ -136,7 +133,6 @@ body {
 .bg-vertical-line.left { left: 3rem; }
 .bg-vertical-line.right { right: 3rem; }
 
-/* Elegant Framing Corners */
 .corner-ornament {
     position: fixed;
     width: 12px;
@@ -175,7 +171,6 @@ body {
     border-top: none;
 }
 
-/* Hero Header styling */
 .hero {
     padding: 7rem 0 3.5rem 0;
     text-align: center;
@@ -206,7 +201,6 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Archive Index Navigation */
 .archive-nav {
     display: inline-flex;
     gap: 1.5rem;
@@ -245,7 +239,6 @@ body {
     opacity: 0.5;
 }
 
-/* Section Layouts */
 .wiki-section {
     margin-bottom: 5rem;
     transition: opacity 0.4s ease, transform 0.4s ease;
@@ -262,14 +255,12 @@ body {
     margin-bottom: 2.25rem;
 }
 
-/* Character Cards Grid */
 .character-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2.5rem;
 }
 
-/* Individual Character Card */
 .char-card {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -282,14 +273,12 @@ body {
     transition: var(--transition-smooth);
 }
 
-/* Hover Lift Effect */
 .char-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 16px 36px rgba(187, 161, 92, 0.08);
     border-color: var(--accent-color);
 }
 
-/* Image Container Styles */
 .char-image-container {
     height: 180px;
     background-color: var(--accent-light);
@@ -301,7 +290,6 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
-/* Actual Character Photo Styling */
 .char-image {
     width: 100%;
     height: 100%;
@@ -337,7 +325,6 @@ body {
     letter-spacing: 0.02em;
 }
 
-/* Key-Value Meta List */
 .meta-list {
     display: flex;
     flex-direction: column;
@@ -370,7 +357,6 @@ body {
     font-weight: 300;
 }
 
-/* Modal Styling */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -450,7 +436,6 @@ body {
     padding: 2.5rem;
 }
 
-/* Modal Split Layout */
 .modal-header-split {
     display: grid;
     grid-template-columns: 180px 1fr;
@@ -498,7 +483,6 @@ body {
     letter-spacing: 0.05em;
 }
 
-/* Modal Story Details */
 .modal-story-section {
     margin-bottom: 2rem;
 }
@@ -521,7 +505,6 @@ body {
     text-align: justify;
 }
 
-/* Modal Video Embedded Section */
 .modal-video-title {
     font-family: var(--font-heading);
     font-size: 1.1rem;
@@ -532,7 +515,7 @@ body {
 
 .modal-video-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%; 
     height: 0;
     overflow: hidden;
     border: 1px solid var(--border-color);
@@ -548,7 +531,6 @@ body {
     height: 100%;
 }
 
-/* Footer styling */
 .footer {
     position: relative;
     z-index: 10;
@@ -559,7 +541,6 @@ body {
     letter-spacing: 0.05em;
 }
 
-/* CSS Entrance Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -585,10 +566,9 @@ body {
     animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Responsive adjustments */
 @media (max-width: 900px) {
     body {
-        background-attachment: scroll; /* Fixes WebKit blank page rendering */
+        background-attachment: scroll; 
     }
     .bg-vertical-line, 
     .bg-frame-top, 
@@ -596,7 +576,7 @@ body {
     .corner-ornament,
     .bg-glow-left,
     .bg-glow-right {
-        display: none; /* Prevents overflow layout breakage */
+        display: none; 
     }
 }
 
@@ -630,10 +610,6 @@ body {
         grid-template-columns: 1fr;
     }
 }
-
-/* ==========================================================================
-   Archival Spotlight Banner Styles
-   ========================================================================== */
 
 .spotlight-section {
     margin: 2rem auto 3.5rem auto;
@@ -791,7 +767,6 @@ body {
     transform: rotate(45deg);
 }
 
-/* Responsive Overrides for Spotlight */
 @media (max-width: 768px) {
     .spotlight-content {
         flex-direction: column;
@@ -813,9 +788,6 @@ body {
     }
 }
 
-/* ==========================================================================
-   Tarot Card Gacha Button (Consult the Fates)
-   ========================================================================== */
 
 .fates-trigger {
     position: fixed;
@@ -837,7 +809,6 @@ body {
     z-index: 900;
 }
 
-/* Subtle corner stars inside the mini-card */
 .fates-trigger::before,
 .fates-trigger::after {
     content: '✦';
@@ -854,7 +825,6 @@ body {
     transition: var(--transition-smooth);
 }
 
-/* Hover & Focus Interactions */
 .fates-trigger:hover {
     transform: translateY(-6px) rotate(-3deg);
     border-color: var(--text-color);
@@ -872,7 +842,6 @@ body {
     color: var(--text-color);
 }
 
-/* CSS Tooltip on Hover */
 .fates-tooltip {
     position: absolute;
     right: 70px;
@@ -897,7 +866,6 @@ body {
     transform: translateY(-50%) translateX(0);
 }
 
-/* Responsive adjustments for smaller screens */
 @media (max-width: 900px) {
     .fates-trigger {
         bottom: 1.5rem;
@@ -907,28 +875,21 @@ body {
         padding: 0.6rem 0;
     }
     .fates-tooltip {
-        display: none; /* Prevents overflow issues on mobile viewport edges */
+        display: none; 
     }
 }
 
-/* ==========================================================================
-   Obsidian Dark Theme Overrides
-   ========================================================================== */
-
 body.dark-mode {
-    --bg-color: #121920;        /* Premium Obsidian Slate */
-    --text-color: #f1ebd9;      /* Clear Parchment Sand */
-    --text-muted: #9cb2c9;      /* Higher contrast slate-blue for comfortable reading */
-    --accent-light: #1b2632;    /* Dark container backgrounds */
-    --card-bg: #18212a;         /* Elevated obsidian container card */
-    --border-color: #2b3a4a;    /* Muted gold-slate borders */
-    
-    /* New dark mode gradient colors */
-    --gradient-top: #1b2530;    /* Muted deep blue-grey at the top */
-    --gradient-bottom: #090e13; /* Rich dark shadow at the base */
+    --bg-color: #121920;        
+    --text-color: #f1ebd9;     
+    --text-muted: #9cb2c9;      
+    --accent-light: #1b2632;    
+    --card-bg: #18212a;         
+    --border-color: #2b3a4a;    
+    --gradient-top: #1b2530;    
+    --gradient-bottom: #090e13; 
 }
 
-/* Dim and adapt the background glow graphics for dark mode */
 body.dark-mode .bg-glow-left {
     background: radial-gradient(circle, rgba(187, 161, 92, 0.05) 0%, rgba(18, 25, 32, 0) 70%);
 }
@@ -937,7 +898,6 @@ body.dark-mode .bg-glow-right {
     background: radial-gradient(circle, rgba(187, 161, 92, 0.03) 0%, rgba(18, 25, 32, 0) 70%);
 }
 
-/* Enable smooth transitions across all theme-affected structures */
 body {
     transition: background-color 0.8s ease, color 0.8s ease, background-image 0.8s ease;
 }
@@ -946,7 +906,6 @@ body {
     transition: var(--transition-smooth), background-color 0.8s ease, border-color 0.8s ease;
 }
 
-/* Theme Toggle Button Styling */
 .theme-toggle-btn {
     position: fixed;
     top: 4.5rem;
@@ -978,18 +937,10 @@ body {
     }
 }
 
-/* ==========================================================================
-   Typewriter Intro Support
-   ========================================================================== */
-
 .hero-tagline {
-    opacity: 1; /* Replaces static CSS fade-in rule */
-    min-height: 1.5em; /* Reserve vertical layout space to prevent page shift */
+    opacity: 1; 
+    min-height: 1.5em; 
 }
-
-/* ==========================================================================
-   Hover Sparkle Particles 
-   ========================================================================== */
 
 .sparkle-particle {
     position: absolute;
@@ -1012,12 +963,8 @@ body {
     }
 }
 
-/* ==========================================================================
-   Character Faction Background Crests
-   ========================================================================== */
-
 .char-card {
-    position: relative; /* Ensure the absolute crest aligns to the card */
+    position: relative; 
 }
 
 .faction-crest {
@@ -1038,10 +985,6 @@ body {
     opacity: 0.08;
     transform: scale(1.05) rotate(-5deg);
 }
-
-/* ==========================================================================
-   Scribe Signature (End of File)
-   ========================================================================== */
 
 .scribe-signature {
     text-align: center;
