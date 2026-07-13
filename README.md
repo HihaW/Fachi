@@ -3,7 +3,7 @@ Website project for you to try on
 https://hihaw.github.io/Fachi/
 
 ## 🌟 Fachi - Character Wiki Hub
-**Fachi** adalah platform wiki interaktif yang didedikasikan untuk membahas dan membedah karakter game secara mendalam. Mulai dari lore, hingga analisis mekanik mendalam untuk karakter favoritmu seperti **Firefly (Honkai: Star Rail)** dan **Rien (Limbus Company)**.
+**Fachi** adalah platform wiki interaktif yang didedikasikan untuk membahas dan membedah karakter game secara mendalam. Mulai dari lore untuk karakter favoritmu seperti **Firefly (Honkai: Star Rail)** dan **Rien (Limbus Company)**.
 
 ## 🛠️ Feature
 - Spotlight Character
